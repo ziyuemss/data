@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <!-- 引入 echarts.js -->
+    <script src="echarts.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/data.css">
+</head>
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="boxs">天津市智交通管理系统</div>
+    <div id="box_one">
+    	<div id="main" style="width: 600px;height:300px;"></div>
+    </div>
+    <div id='box'>
+    	<div id="zhuxin" style="width:620px;height:300px;left:-20px;"></div>
+    	<div id="yuanzhu" style="width:600px;height:300px;"></div>
+	</div>
+	<div id="box_tow">
+	 	<div id="xiezhu" style="width:500px;height:300px;"></div>
+	</div>
+   	<div id="box_three">
+    	<div id="zhexian" style="width: 400px;height:300px;"></div>
+    </div>
+    <div id="tq">
+    	<h3>特勤保卫</h3>
+    	<div style="color: #59abd1;">
+    		<span>36,542</span>
+    		<span>34% 特勤保卫次数</span>
+    	</div>
+    	<div style="color: #a0add7;">
+    		<span>36,542</span>
+    		<span>34% 特勤保卫次数</span>
+    	</div>
+    	<div style="color: #f7cf9b;">
+    		<span>36,542</span>
+    		<span>34% 特勤保卫次数</span>
+    	</div>
+    	<div style="color: #7ee890;">
+    		<span>36,542</span>
+    		<span>34% 特勤保卫次数</span>
+    	</div>
+    	<div style="color: #078da6;">
+    		<span>36,542</span>
+    		<span>34% 特勤保卫次数</span>
+    	</div>
+    	<div style="color: #889ada;">
+    		<span>36,542</span>
+    		<span>34% 特勤保卫次数</span>
+    	</div>
+    </div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+var myChart = echarts.init(document.getElementById('main'));
+       
+        // 指定图表的配置项和数据
+
+var  option = {
+            title:{
+                text: "警情接报收集",
+                left: "center",
+                padding: [30,15,10,10],
+                textStyle:{
+                    //文字颜色
+                    color:'#ccc',
+                }
+            },
+            tooltip: {
+                trigger: 'item',
+                formatter: "{a} <br/>{b}: {c} ({d}%)"
+            },
+            legend: {
+                orient: 'vertical',
+                x: '430px',
+                y:"center",
+                data:['已处理事件','未处理事件','已上报事件'],
+                padding: [30,25],
+                textStyle:{
+                	color:'#fff'
+                }
+            },
+            color:['#1c6eb8','#8159c9','#338088'],
+            series: [
+               
+                {
+                    name:'访问来源',
+                    type:'pie',
+                    radius: ['45%', '35%'],
+                    label: {
+                        normal: {
+                            formatter: ' {per|{d}%}',
+                            rich: {
+                                a: {
+                                    color: '#999',
+                                    lineHeight: 22,
+                                    align: 'center'
+                                },
+                                
+                            }
+                        }
+                    },
+                    data:[
+                        {value:180, name:'已处理事件'},
+                        {value:580, name:'未处理事件'},
+                        {value:320, name:'已上报事件'}
+                        
+                    ]
+                }
+            ]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+
+
+        var xAxisData = [];
+		var data1 = [];
+		var data2 = [];
+		var data3 = [];
+		for (var i = 0; i < 600; i++) {
+    	xAxisData.push(i);
+    	data1.push((Math.sin(i / 5) * (i / 5 -10) + i / 6) * 5);
+    	data2.push((Math.cos(i / 5) * (i / 5 -10) + i / 6) * 5);
+    	data3.push((Math.cos(i / 5) * (i / 5 -10) + i / 6) * 5);
+}
+    	var myCharts= echarts.init(document.getElementById('zhuxin'));
+
+        var options = {
+    	title: {
+        text: '城市治安事件态势图',
+        subtext: '事件总数：1161',
+        textStyle:{
+        		color:'#fff'
+        },
+        padding: [5,25,50,25]
+    	},
+    	legend: {
+        data: ['已处理事件', '未处理事件','已上报事件'],
+        align: 'left',
+        padding: [30,45],
+        textStyle:{
+                    //文字颜色
+                    color:'#ccc',
+                }
+   	 	},
+   	 	color:['#63c280','#20708b','#1eb2be'],
+    	toolbox: {
+        // y: 'bottom',
+        show:false,
+        feature: {
+            magicType: {
+                type: ['stack', 'tiled']
+            },
+            dataView: {},
+            saveAsImage: {
+                pixelRatio: 2
+            }
+        }
+    },
+    tooltip: {},
+    xAxis: {
+        data: xAxisData,
+        silent: false,
+        splitLine: {
+            show: false
+        },
+        axisLine: {
+                   lineStyle: {
+                       type: 'solid',
+                       color:'#fff'
+                   }
+               }
+
+    },
+    yAxis: {
+    	axisLine: {
+                   lineStyle: {
+                       type: 'solid',
+                       color:'#fff'
+                   }
+               }
+    },
+    series: [{
+        name: '已处理事件',
+        type: 'bar',
+        data: data1,
+        animationDelay: function (idx) {
+            return idx * 10;
+        }
+    }, {
+        name: '未处理事件',
+        type: 'bar',
+        data: data2,
+        animationDelay: function (idx) {
+            return idx * 10 -5;
+        }
+    
+    }, {
+        name: '已上报事件',
+        type: 'bar',
+        data: data3,
+        animationDelay: function (idx) {
+            return idx * 10 -10;
+        }
+    
+    }],
+    animationEasing: 'elasticOut',
+    animationDelayUpdate: function (idx) {
+        return idx * 5;
+    }
+};
+// 使用刚指定的配置项和数据显示图表。
+        myCharts.setOption(options);
+
+
+
+var myChartyz = echarts.init(document.getElementById('yuanzhu'));
+
+    var optionyz = {
+    color: ['#3398DB'],
+    title: {
+        text: '警力岗位',
+        padding:[30,30],
+        textStyle:{
+        		color:'#fff'
+        }
+    	},
+    tooltip : {
+        trigger: 'axis',
+        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+        }
+    },
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+    },
+    xAxis : [
+        {
+            type : 'category',
+            data : ['和平区', '河西区', '河东区', '红桥区', '河北区', '离开区', '北研区'],
+            axisTick: {
+                alignWithLabel: true
+
+            },
+             axisLine: {
+                   lineStyle: {
+                       type: 'solid',
+                       color:'#fff'
+                   }
+               }
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+             axisLine: {
+                   lineStyle: {
+                       type: 'solid',
+                       color:'#fff'
+                   }
+               }
+        }
+    ],
+    series : [
+        {
+            name:'直接访问',
+            type:'bar',
+            barWidth: '30%',
+            data:[1900, 1500, 1300, 1000, 1400, 1800, 1400,1400,800,900,500]
+        }
+    ]
+};
+ myChartyz.setOption(optionyz);
+
+
+
+var myChartxz = echarts.init(document.getElementById('xiezhu'));
+
+ var optionxz = {
+    title: {
+        text: '占路施工',
+        subtext: '占路施工数量',
+        left:'center',
+        textStyle:{
+        		color:'#fff'
+        }
+    },
+    tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+            type: 'shadow'
+        }
+    },
+    grid: {
+        left: '25%',
+        right: '20%',
+        bottom: '25%',
+        containLabel: true
+    },
+    xAxis: {
+        type: 'value',
+        boundaryGap: [0, 0.01],
+        axisLine:{
+        	show:false,
+        	lineStyle:{
+        		color:'#fff'
+        	}
+        }
+
+    },
+    yAxis: {
+        type: 'category',
+        data: ['和平区','河西区','河东区','红桥区','河北区','占路施工(次)'],
+        axisLine:{
+        	show:false,
+        	lineStyle:{
+        		color:'#fff'
+        	}
+        }
+    },
+    splitArea:{
+    	show:false
+    },
+    series: [
+        {
+            name: '2019年',
+            type: 'bar',
+            barWidth: '15%',
+            data: [1040, 736, 1480, 367, 487]
+        }
+    ]
+};
+
+myChartxz.setOption(optionxz);
+
+var myChartline = echarts.init(document.getElementById('zhexian'));
+
+optionline = {
+    title: {
+        text: '分析研判',
+        padding:[30,30],
+                textStyle:{
+                    //文字颜色
+                    color:'#ccc',
+                }
+    },
+    tooltip: {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['和平区','河西区','河东区','红桥区','河北区'],
+        textStyle:{
+                    //文字颜色
+                    color:'#ccc',
+                }
+    },
+    grid: {
+        left: '20%',
+        right: '30%',
+        bottom: '20%',
+        containLabel: true
+    },
+    xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: ['周一','周二','周三','周四','周五','周六','周日'],
+        axisLine:{
+        	lineStyle:{
+        		color:'#fff'
+        	}
+        }
+    },
+    yAxis: {
+        type: 'value',
+        axisLine:{
+        	lineStyle:{
+        		color:'#fff'
+        	}
+        	}
+    },
+    series: [
+        {
+            name:'和平区',
+            type:'line',
+            stack: '总量',
+            data:[120, 132, 101, 134, 90, 230, 210]
+        },
+        {
+            name:'河西区',
+            type:'line',
+            stack: '总量',
+            data:[220, 182, 191, 234, 290, 330, 310]
+        },
+        {
+            name:'河东区',
+            type:'line',
+            stack: '总量',
+            data:[150, 232, 201, 154, 190, 330, 410]
+        },
+        {
+            name:'红桥区',
+            type:'line',
+            stack: '总量',
+            data:[320, 332, 301, 334, 390, 330, 320]
+        },
+        {
+            name:'河北区',
+            type:'line',
+            stack: '总量',
+            data:[820, 932, 901, 934, 1290, 1330, 1320]
+        }
+    ]
+};
+myChartline.setOption(optionline);
+    </script>
+</body>
+</html>

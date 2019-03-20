@@ -1,0 +1,88 @@
+@charset "UTF-8";
+body, h1, h2, h3, h4, h5, h6, ol, ul, dl, dd, p, input, select, textarea, td {
+  margin: 0;
+  padding: 0; }
+body {
+  font-family: "微软雅黑";
+  background:#181b2c;
+   }
+
+a {
+  text-decoration: none; }
+
+ul, ol {
+  list-style: none; }
+
+img {
+  border: none;
+  display: block; }
+  #main{
+  	left:-80px;
+  	background:#212644;
+  }
+  #boxs{
+  	color:#fff;
+  	margin-top: 10px;
+  	font-size: 26px;
+  	margin-left: 10px;
+  }
+  #box{
+ position:absolute;
+ background:#181b2c;
+ left: 400px;
+ top:50px;
+  }
+  #zhuxin{
+  	background:#212644;
+  }
+  #yuanzhu{
+  	background:#212644;
+  	margin-top: 20px;
+  }
+  #box_tow{
+  position:absolute;
+  background:#212644;
+ left: 860px;
+ top:50px;
+  }
+  #box_one{
+  	position:absolute;
+  	background:#212644;
+ 	left: -85px;
+ 	top:50px;
+  }
+  #box_three{
+  	position:absolute;
+  	background:#212644;
+ 	left: -9px;
+ 	top:370px;
+  }
+  #tq{
+  	width:345px;
+  	height:300px;
+  	position:absolute;
+  	background:#212644;
+ 	left: 1010px;
+ 	top:370px;
+  }
+  #tq div{
+  	width:50%;
+  	float:left;
+  	height:90px;
+  	color:#fff;
+  	font-size: 14px;
+  	
+  }
+  #tq div span{
+  	display: block;
+  	margin-left: 30px;
+  }
+  #tq div span:nth-child(1){
+  	font-size: 26px;
+  }
+  #tq h3{
+  	color:#fff;
+  	text-align:center;
+  	margin-top:20px;
+  	margin-bottom:10px;
+  }
